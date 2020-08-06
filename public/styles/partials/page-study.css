@@ -84,7 +84,7 @@
   font-size: 1.6rem;
   display: block;
 }
-.teacher-item button {
+.teacher-item .button {
   width: 20rem;
   height: 5.6rem;
   background: var(--color-secondary);
@@ -102,7 +102,7 @@
   transition: background 0.2s;
   margin-left: 1.6rem;
 }
-.teacher-item button:hover {
+.teacher-item .button:hover {
   background: var(--color-secondary-dark);
 }
 @media (min-width: 700px) {

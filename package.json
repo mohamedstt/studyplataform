@@ -1,12 +1,13 @@
 {
-  "name": "StudyPlataform",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "studyplataform",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "express": "^4.17.1",
+    "nunjucks": "^3.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }
