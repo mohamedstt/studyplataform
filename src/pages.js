@@ -13,7 +13,7 @@ function pageLanding(req, res) {
 async function pageStudy(req, res) {
   const filters = req.query;
 
-  if (!filters.subject || !filters.weekday || filters.time) {
+  if (!filters.subject || !filters.weekday || !filters.time) {
     return res.render("study.html", { filters, subjects, weekdays });
   }
   const timeToMinutes = convertHoursToMinute(filters.time);
@@ -26,20 +26,25 @@ async function pageStudy(req, res) {
     FROM class_schedule
     WHERE class_schedule.class_id = classes.id
     AND class_schedule.weekday = ${filters.weekday}
-    AND class_schedule.time_from = ${filters.timeToMinutes}
-    AND class_schedule.time_to = ${filters.timeToMinutes}
+    AND class_schedule.time_from <= ${timeToMinutes}
+    AND class_schedule.time_to > ${timeToMinutes}
   )
-  AND class.subject = ${filters.subject}
+  AND classes.subject = "${filters.subject}"
   `;
 
   try {
     const db = await Database;
     const proffys = await db.all(query);
-    return res.render("study.html", { proffys, filters, subjects, weekdays });
+    proffys.map((proffy) => {
+      proffy.subject = getSubject(proffy.subject);
+    });
+
+    return res.render("study.html", { proffys, subjects, filters, weekdays });
   } catch (error) {
     console.log(error);
   }
 }
+
 function pageGiveClass(req, res) {
   return res.render("give-classes.html", { subjects, weekdays });
 }
@@ -60,20 +65,19 @@ async function saveClasses(req, res) {
     return {
       weekday,
       time_from: convertHoursToMinute(req.body.time_from[index]),
-      time_to: convertHoursToMinute(req.body.time_to[index])
-    }
+      time_to: convertHoursToMinute(req.body.time_to[index]),
+    };
   });
   try {
-    const db = await Database
-    await createProffy(db, { proffyValue, classValue, classScheduleValues })
-    
-    let queryString = "?subject" + req.body.subject
-    queryString += "&weekday" + req.body.weekday[0]
-    queryString += "&time" + req.body.time_from[0]
-  return res.redirect("/study" + queryString);
+    const db = await Database;
+    await createProffy(db, { proffyValue, classValue, classScheduleValues });
 
+    let queryString = "?subject=" + req.body.subject;
+    queryString += "&weekday=" + req.body.weekday[0];
+    queryString += "&time=" + req.body.time_from[0];
+    return res.redirect("/study" + queryString);
   } catch (error) {
-   console.log(error);
+    console.log(error);
   }
 }
 
