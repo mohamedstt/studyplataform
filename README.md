@@ -4,15 +4,13 @@
 
 <div align="center">
 
-[![GitHub stars](https://img.shields.io/github/stars/mohamedstt/studyplataform)](https://github.com/mohamedstt/studyplataform/stargazers)<space> <space>[![GitHub license](https://img.shields.io/github/license/mohamedstt/studyplataform)](https://github.com/mohamedstt/studyplataform/blob/master/LICENSE)<space> <space>[![GitHub forks](https://img.shields.io/github/forks/mohamedstt/studyplataform)](https://github.com/mohamedstt/studyplataform/network)
-
 </div>
 
 ## 📋 Índice
 
-- [About](#-Sobre)
-- [Technologies](#-Tecnologias-utilizadas)
-- [How to execute](#-Como-executar-o-projeto)
+- [About](#-About)
+- [Technologies](#-Technologies)
+- [How to execute](#-How-to-execute)
 - [Preview](#-Preview)
 
 ---
