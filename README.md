@@ -15,7 +15,7 @@
 
 ---
 
-## 📖 Sobre
+## 📖 About
 The project intention is an application that can connect who wants to learn, wants to teach. You can find students for what you teach, or find the teacher for that subject you always wanted to learn more about! Without any area limitation !!
 
 ## 🖥 Preview 
