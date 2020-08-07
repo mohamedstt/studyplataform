@@ -31,11 +31,10 @@
           <div class="select-block">
             <label for="subject">School subjects</label>
             <select name="subject" id="subject">
-
               {%for subject in subjects%}
-              <option value="{{loop.index}}" {{"selected" if filters.subject == loop.index }}>
+                <option value="{{loop.index}}" {{"selected" if filters.subject == loop.index }}>
                 {{subject}}
-              </option>
+                </option>
               {%endfor%}
 
             </select>
@@ -61,9 +60,14 @@
       </div>
     </header>
     <main>
-      {%for proffy in proffys%}
 
-      <article class="teacher-item">
+      {%if proffys == "" %}
+        <p class="no-results">
+          Sorry, not results in your search.
+        </p>
+      {% else %}
+          {%for proffy in proffys%}
+              <article class="teacher-item">
         <header>
           <img src="{{proffy.avatar}}" alt="{{proffy.name}}">
           <div>
@@ -82,8 +86,10 @@
             <img src="/images/icons/whatsapp.svg" alt="whatsapp">Entrar em contato
           </a>
         </footer>
-      </article>
-      {%endfor%}
+              </article>
+          {%endfor%}
+      {%endif%}
+      
     </main>
 
   </div>
