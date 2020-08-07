@@ -10,7 +10,7 @@
 
 - [About](#-About)
 - [Technologies](#-Technologies)
-- [How to execute](#-How-to-execute)
+- [How to execute](#-How-to-execute-this-project)
 - [Preview](#-Preview)
 
 ---
